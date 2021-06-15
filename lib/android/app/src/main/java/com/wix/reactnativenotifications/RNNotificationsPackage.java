@@ -73,6 +73,9 @@ public class RNNotificationsPackage implements ReactPackage, AppLifecycleFacade.
 
     @Override
     public void onActivityStarted(Activity activity) {
+        if (activity.getIntent() == null) {
+          return;
+	}
         Bundle bundle = activity.getIntent().getExtras();
         if (bundle != null) {
             PushNotificationProps props = new PushNotificationProps(bundle);
